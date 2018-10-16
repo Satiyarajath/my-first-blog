@@ -4,17 +4,15 @@
     </head>
     <body>
         <div>
-            <h1> <a href = "/">Satiya's Blog </a></h1>
+            <h1><a href = "/">Satiya's Blog </a></h1>
         </div>
+        {% for post in posts %}
         <div>
-            <p>published date : 13-10-2018:08:24 </p>
-            <h2><a href = "">My first blog</a></h2>
-            <p>This is my first blog</p>
+            <p>published date : {{post.published_date}}</p>
+            <h2><a href="">{{post.title}}</a></h2>
+            <p>{{post.text|linebreaksbr}}</p>
+            <br>
         </div>
-        <div>
-            <p>published date : 13-10-2018:08:25</p>
-            <h2><a href = "">My second blog</a></h2>
-            <p>This is my second blog</p>
-        </div>
+        {% endfor %}
     </body>
 </html>

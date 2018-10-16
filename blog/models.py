@@ -12,13 +12,15 @@ class Post(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
 
-# update published date for the post with current date time and save the post
-def publish(self):
-    self.published_date = timezone.now()
-    self.save()
+    # methods inside class Post
 
-# returns string of Title when object belonging to Post class is called
-def __str__(self):
-    return self.title
+    # update published date for the post with current date time and save the post
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
+
+    # returns string of Title when object belonging to Post class is called
+    def __str__(self):
+        return self.title
 
 
