@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404   # in case primary key,'pk' doesn't match
 from .models import Post                # including models inside view to query the DB
                                         # and send value to template
                                         # . --> current directory
@@ -13,3 +13,9 @@ def Post_List(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('created_date')
     # pass the query set to template
     return render(request,'blog/Post_List.html', {'posts':posts}) 
+
+def Post_Detail(request,pk):
+    # query set from DB to get post using primary key
+    # get_object_or_404 --> to handle pk doesn't exist
+    post = get_object_or_404(Post,pk=pk)
+    return render(request,'blog/Post_Detail.html',{'post' : post})

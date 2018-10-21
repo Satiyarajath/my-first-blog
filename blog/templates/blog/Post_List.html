@@ -1,18 +1,13 @@
-<html>
-    <head>
-        <title> Satiya's Blog </title>
-    </head>
-    <body>
-        <div>
-            <h1><a href = "/">Satiya's Blog </a></h1>
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                <p>published: {{ post.published_date }}</p>
+            </div>
+            <h1><a href="{% url 'Post_Detail' pk=post.pk %}">{{ post.title }}</a></h1>
+            <p>{{ post.text|linebreaksbr|truncatewords:80 }}</p>
         </div>
-        {% for post in posts %}
-        <div>
-            <p>published date : {{post.published_date}}</p>
-            <h2><a href="">{{post.title}}</a></h2>
-            <p>{{post.text|linebreaksbr}}</p>
-            <br>
-        </div>
-        {% endfor %}
-    </body>
-</html>
+    {% endfor %}
+{% endblock %}

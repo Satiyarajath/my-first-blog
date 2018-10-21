@@ -12,4 +12,5 @@ from . import views                         # . --> current directory
 
 urlpatterns = [
     path('',views.Post_List,name='Post_List'),   # named url - useful for reverse URL mapping
+    path('post/<int:pk>/',views.Post_Detail,name='Post_Detail'),   # named url - for reverse lookup of each post
 ]
