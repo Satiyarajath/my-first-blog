@@ -17,7 +17,11 @@ from django.contrib import admin
 #from django.urls import path                   #
 from django.urls import path,include            # added include to include another URLconf
 
+from django.contrib.auth import views as auth_views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/login/', auth_views.LoginView.as_view(),name='login'),    # adding login in page for the site
+    path('accounts/logout/', auth_views.LogoutView.as_view(),name='logout'),    # adding logout in page for the site
     path('',include('blog.urls')),              # views present in blog.urls URLconf 
 ]
